@@ -1,101 +1,97 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
+  <!DOCTYPE html>
+  <html lang="it">
+  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Un'applicazione web per gestire il punteggio tra due giocatori di biliardo tramite comandi vocali.">
   <link rel="preload" href="Digital-7.woff2" as="font" type="font/woff2" crossorigin>
   <title>Segnapunti Vocale Biliardo - Gioco tra due giocatori</title>
   <style>
-    @font-face {
-    font-family: 'Digital-7';
-    src: url('Digital-7.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      height:100vh;
-      background-color: black;
-      margin:0;
-      padding:0;
-    }
-    #scoreboard {
-      display: flex;
-      justify-content: center;
-      /* margin-top: 50px; */
-      height: 100%;
-      flex-wrap: wrap;
-    }
-    .player {
-      /* margin: 0 20px; */
-      /* height: 100%; */
-     /*  flex: 1; */
-     font-size: max(55px, 5vw);
-     font-family: math;
-     padding-inline: 10px;
-     text-transform: capitalize;
-
-    }
-    .left, .right {
-        /* width: 50%; */
-        /* height: 100%; */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 1rem;
-        flex: 1; 
-    }
-
-    .left{
-        color:rgb(6, 255, 6);
-    }
-
-    .right{
-        
-        color: rgb(255, 0, 0);
-    }
-    .score {
-        /* flex: 1; */
-    font-family: 'Digital-7';
-    font-weight: normal;
-    font-style: normal;
-    font-size: max(244px, 29vw);
-    }
-
-    @media (max-height: 400px) {
-  .left, .right {
-    justify-content: flex-start;
+  @font-face {
+  font-family: 'Digital-7';
+  src: url('Digital-7.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
   }
-}
 
-footer {
-    color: yellow;
-    position: fixed;
-    bottom: 0;
-    right:1%;
-    padding: 10px;
-    display: flex;
-    gap: 25px;
-}
+  body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  height:100vh;
+  background-color: black;
+  margin:0;
+  padding:0;
+  }
 
-a {
-    color: yellow;
-    text-decoration: none;
-}
+  #scoreboard {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  flex-wrap: wrap;
+  }
 
-button{
-    border: 0;
-    padding: 0;
-    background-color: transparent;
-    color: yellow;
-    cursor: pointer;
-    font-size: medium;
-}
+  .player {
+  font-size: max(55px, 5vw);
+  font-family: math;
+  padding-inline: 10px;
+  text-transform: capitalize;
 
-.modal {
+  }
+  .left, .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  flex: 1; 
+  }
+
+  .left{
+  color:rgb(6, 255, 6);
+  }
+
+  .right{   
+  color: rgb(255, 0, 0);
+  }
+
+  .score {
+  font-family: 'Digital-7';
+  font-weight: normal;
+  font-style: normal;
+  font-size: max(244px, 29vw);
+  }
+
+  @media (max-height: 400px) {
+  .left, .right {
+  justify-content: flex-start;
+  }
+  }
+
+  footer {
+  color: yellow;
+  position: fixed;
+  bottom: 0;
+  right:1%;
+  padding: 10px;
+  display: flex;
+  gap: 25px;
+  }
+
+  a {
+  color: yellow;
+  text-decoration: none;
+  }
+
+  button{
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  color: yellow;
+  cursor: pointer;
+  font-size: medium;
+  }
+
+  .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -105,191 +101,166 @@ button{
   height: auto; 
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-   background-color: rgba(0,0,0,0.4);  
+  background-color: rgba(0,0,0,0.4);  
   transform: translateX(-50%) translateY(-50%);
-}
+  }
 
-/* Modal Content */
-.modal-content {
+  .modal-content {
   background-color: black;
   margin: auto;
-  padding: 20px;
+  padding-inline: 20px;
+  padding-block: 10px;
   border: 2px solid yellow;
   width: 80%;
   color: yellow;
   font-family: math;
-}
+  }
 
-.modal-content p{
-    font-size: max(1.5vw, 19px);
-}
+  .modal-content p{
+  font-size: max(1.5vw, 19px);
+  }
 
-/* The Close Button */
-.close {
+  h1 {
+    margin: 0;
+  }
+
+  small {
+    font-size: large;
+  }
+
+  small a {
+    text-decoration: underline;
+    color:rgb(6, 255, 6);
+  }
+
+  /* The Close Button */
+  .close {
   color: red;
-  /* float: right; */
   font-size: 32px;
   font-weight: bold;
   display: block;
   text-align: right;
-}
+  }
 
-.close:hover,
-.close:focus {
+  .close:hover,
+  .close:focus {
   text-decoration: none;
   cursor: pointer;
-}
+  }
 
   </style>
-</head>
-<body>
-  
+  </head>
+  <body>
+
   <div id="scoreboard">
-    <div class="left">
-        <div class="player" id="player1">Michele </div>
-        <div id="score1" class="score">0</div>
-    </div>
-    <div class="right">
-       <div class="player" id="player2">Ospite </div> 
-       <div id="score2" class="score">0</div>
-    </div>
-    
+  <div class="left">
+  <div class="player" id="player1">Michele </div>
+  <div id="score1" class="score">0</div>
+  </div>
+  <div class="right">
+  <div class="player" id="player2">Ospite </div> 
+  <div id="score2" class="score">0</div>
+  </div>
+
   </div>
   <footer>
-    <button onclick="openFullScreen();" >FullScreen</button>
-    <button onclick="openModal();">Istruzioni</button>
-    <a href="https://github.com/and0rl/vocalscoreboard" target="_blank" rel="noopener noreferrer">Github</a>
+  <button onclick="openFullScreen();" >FullScreen</button>
+  <button onclick="openModal();">Istruzioni</button>
+  <a href="https://github.com/and0rl/vocalscoreboard" target="_blank" rel="noopener noreferrer">Github</a>
   </footer>
 
   <!-- The Modal -->
-<div id="myModal" class="modal">
+  <div id="myModal" class="modal">
 
-    <!-- Modal content -->
-    <div class="modal-content">
-      <span onclick="closeModal();" class="close">&times;</span>
-      <h1>Segnapunti Vocale Biliardo</h1>
-      <p>Esempi Comandi Vocali:</p>
-      <p>"Segna dodici Michele"</p>
-      <p>"Segna meno otto Ospite"</p>
-      <p>"Imposta Giocatori Luca Mario"</p>
-      <p>"Resetta Tabellone"</p>
-    </div>
-  
+  <!-- Modal content -->
+  <div class="modal-content">
+  <span onclick="closeModal();" class="close">&times;</span>
+  <h1>Segnapunti Vocale Biliardo</h1>
+  <small>da un'idea di <a href="https://www.facebook.com/michele.derrico.77" target="_blank" rel="noopener noreferrer">M.D'Errico</a> </small>
+  <p>Esempi Comandi Vocali:</p>
+  <p>"Segna dodici Michele"</p>
+  <p>"Segna meno otto Ospite"</p>
+  <p>"Imposta Giocatori Luca Mario"</p>
+  <p>"Resetta Tabellone"</p>
+  </div>
+
   </div>
 
   <script>
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'it-IT';
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
 
-    //recognition.continuous = true;
+  //SET DIFFERENT LOCALE HERE!!
+  recognition.lang = 'it-IT';
 
-    let player1 = "michele";
-    let player2 = "ospite";
+  let player1 = "michele";
+  let player2 = "ospite";
 
-    //document.getElementById("player1").value = player1
+  recognition.onresult = function(event) {
+  const result = event.results[event.results.length - 1][0].transcript;
+  //console.log(result)
+  processVoiceCommand(result);
+  };
 
-    recognition.onresult = function(event) {
-      const result = event.results[event.results.length - 1][0].transcript;
-      //console.log(result)
-      processVoiceCommand(result);
-    };
+  recognition.onend = function() {
+  recognition.stop();
+  recognition.start();
+  };
 
-    recognition.onend = function() {
-      recognition.stop();
-      recognition.start();
-    };
+  function processVoiceCommand(command) {
+  const words = command.split(' ');
 
-    /* function processVoiceCommand(command) {
-      const words = command.split(' ');
-      
-      
-      let action = words[0].toLowerCase();
-      const points = parseInt(words[1]);
-      let player = words[2].toLowerCase();
-     
+  let action = words[0].toLowerCase();
 
-      
-      console.log(words)
-      console.log(points)
-      console.log(player)
+  if (action === 'segna' && !isNaN(parseInt(words[1])) && (words[2]?.toLowerCase() === player1 || words[2]?.toLowerCase() === player2)) {
+  let scoreId = null;
+  words[2]?.toLowerCase() === player1 ? scoreId = 1 : ( words[2]?.toLowerCase() === player2 ? scoreId = 2 : null)
+  addPoints(parseInt(words[1]), scoreId);
+  } else if (action === 'resetta' && words[1]?.toLowerCase() === "tabellone") { 
+  resetMatch();
+  } else if (action === 'imposta' && words[1]?.toLowerCase() === "giocatori" ) {  
+  setPlayers(words[2]?.toLowerCase(), words[3]?.toLowerCase())
+  } else {
+  console.log('Invalid command');
+  }
 
-      if (action === 'segna' && !isNaN(points) && (player === player1 || player === player2)) {
-        player === player1 ? player = 1 : player = 2
-        addPoints(points, player);
-      } else if (action === 'resetta') {
-        resetMatch();
-      } else {
-        console.log('Invalid command');
-      }
+  }
 
-      
+  function addPoints(points, scoreId) {
+  if (scoreId === null) return;  
+  const scoreElement = document.getElementById(`score${scoreId}`);
+  const currentScore = parseInt(scoreElement.textContent);
+  scoreElement.textContent = currentScore + points;
+  }
 
-    } */
+  function resetMatch() {
+  document.getElementById('score1').textContent = '0';
+  document.getElementById('score2').textContent = '0';
+  }
 
-    function processVoiceCommand(command) {
-      const words = command.split(' ');
-      
-      
-      let action = words[0].toLowerCase();
-      /* const points = parseInt(words[1]);
-      let player = words[2].toLowerCase(); */
-     
+  function setPlayers(newPlayer1, newPlayer2){
+  player1 = newPlayer1;
+  player2 = newPlayer2;
+  document.getElementById("player1").innerHTML = newPlayer1;
+  document.getElementById("player2").innerHTML = newPlayer2;
+  }
 
-      
-      /* console.log(words)
-      console.log(points)
-      console.log(player) */
+  function openFullScreen() {
+  document.documentElement.requestFullscreen()  
+  }
 
-      if (action === 'segna' && !isNaN(parseInt(words[1])) && (words[2]?.toLowerCase() === player1 || words[2]?.toLowerCase() === player2)) {
-        let scoreId = null;
-        words[2]?.toLowerCase() === player1 ? scoreId = 1 : ( words[2]?.toLowerCase() === player2 ? scoreId = 2 : null)
-        addPoints(parseInt(words[1]), scoreId);
-      } else if (action === 'resetta' && words[1]?.toLowerCase() === "tabellone") { 
-        resetMatch();
-      } else if (action === 'imposta' && words[1]?.toLowerCase() === "giocatori" ) {  
-        setPlayers(words[2]?.toLowerCase(), words[3]?.toLowerCase())
-      } else {
-        console.log('Invalid command');
-      }
+  function openModal(){
+  const modal = document.getElementById("myModal");  
+  modal.style.display = "block";
+  }
 
-    }
 
-    function addPoints(points, scoreId) {
-      if (scoreId === null) return;  
-      const scoreElement = document.getElementById(`score${scoreId}`);
-      const currentScore = parseInt(scoreElement.textContent);
-      scoreElement.textContent = currentScore + points;
-    }
+  function closeModal(){
+  const modal = document.getElementById("myModal");
+  modal.style.display = "none";  
+  }
 
-    function resetMatch() {
-      document.getElementById('score1').textContent = '0';
-      document.getElementById('score2').textContent = '0';
-    }
-
-    function setPlayers(newPlayer1, newPlayer2){
-       player1 = newPlayer1;
-       player2 = newPlayer2;
-       document.getElementById("player1").innerHTML = newPlayer1;
-       document.getElementById("player2").innerHTML = newPlayer2;
-    }
-
-    function openFullScreen() {
-      document.documentElement.requestFullscreen()  
-    }
-
-    function openModal(){
-      const modal = document.getElementById("myModal");  
-      modal.style.display = "block";
-    }
-
-    
-    function closeModal(){
-        const modal = document.getElementById("myModal");
-       modal.style.display = "none";  
-    }
-
-    recognition.start();
+  recognition.start();
   </script>
-</body>
-</html>
+  </body>
+  </html>
