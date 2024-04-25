@@ -222,6 +222,7 @@
   setPlayers(words[2]?.toLowerCase(), words[3]?.toLowerCase())
   } else {
   console.log('Invalid command');
+  playAudio("error-5-199276.mp3")
   }
 
   }
@@ -259,6 +260,10 @@
   const modal = document.getElementById("myModal");
   modal.style.display = "none";  
   }
+
+  function playAudio(url) {
+  new Audio(url).play();
+}
 
   recognition.start();
   </script>
